@@ -42,6 +42,7 @@ In compliance with project requirements, no standard Java collection classes (`j
 * **Lists:**
   * Singly Linked List & Doubly Linked List
   * List in Array (array-based dynamic list implementations)
+  * Stack
 * **Iterators:** Specialized custom Iterator implementations designed for traversing internal list and tree structures.
 
 ---
