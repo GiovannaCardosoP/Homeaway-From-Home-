@@ -1,6 +1,6 @@
 #  HomeAway From Home (Homeaway)
 
-## 👩‍💻 Authors
+## Authors
 This project was developed by **Giovanna Cardoso** and **Elsa Coimbra**
 
 ## Project Overview
