@@ -1,5 +1,8 @@
 #  HomeAway From Home (Homeaway)
 
+## 👩‍💻 Authors
+This project was developed by **Giovanna Cardoso** and **Elsa Coimbra**
+
 ## Project Overview
 This project is a location-based service application designed to help international students find and manage key services in campus-oriented university towns. Operating within a user-defined geographic bounding rectangle (defined by latitude and longitude coordinates), the application ensures all activities and services remain within the specified town boundaries.
 
