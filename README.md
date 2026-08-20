@@ -47,5 +47,4 @@ In compliance with project requirements, no standard Java collection classes (`j
 
 ---
 
-## 🖼️ Class Diagram
-A complete UML Class Diagram detailing the system architecture, class relationships, inheritance hierarchies, and package structures is included in the project repository files (`` / project documentation).
+
