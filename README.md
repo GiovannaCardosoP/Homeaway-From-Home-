@@ -23,7 +23,7 @@ $$d(l^1, l^2) = |l^1_{\text{lat}} - l^2_{\text{lat}}| + |l^1_{\text{long}} - l^2
 * **Star Ratings & Ranking:** Integrates a 1-to-5 star evaluation system, computing rounded average scores and ordering services by overall quality or proximity.
 * **Review Tag Filtering:** Filters services based on specific keywords contained within user reviews.
 
----
+
 
 ## 🏗️ System Architecture & App Division
 To maintain high cohesion and separation of concerns, the project's main functionalities are structured and divided into dedicated sub-applications (modules):
@@ -32,9 +32,9 @@ To maintain high cohesion and separation of concerns, the project's main functio
 * **Services App (`ServiceAreaClass`):** Dedicated to service management, including adding new services, managing capacity, updating star ratings, ranking services, and processing review tags.
 * **Students App (`StudentAreaClass`):** Handles student management, tracking student registrations, country-based filtering, location movements (`go`, `move`), and visit histories.
 
----
 
-## 📦 Custom Data Structures (`dataStructures`)
+
+## Custom Data Structures (`dataStructures`)
 In compliance with project requirements, no standard Java collection classes (`java.util`) were used for data storage or manipulation. All data management relies on custom-built data structures implemented from scratch, including:
 
 * **Trees:** Binary Search Trees (BST) and self-balancing AVL Trees for logarithmic $O(\log n)$ ordered lookups.
@@ -45,6 +45,6 @@ In compliance with project requirements, no standard Java collection classes (`j
   * Stack
 * **Iterators:** Specialized custom Iterator implementations designed for traversing internal list and tree structures.
 
----
+
 
 
