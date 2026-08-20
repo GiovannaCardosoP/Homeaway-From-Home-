@@ -25,7 +25,7 @@ $$d(l^1, l^2) = |l^1_{\text{lat}} - l^2_{\text{lat}}| + |l^1_{\text{long}} - l^2
 
 
 
-## 🏗️ System Architecture & App Division
+##  System Architecture & App Division
 To maintain high cohesion and separation of concerns, the project's main functionalities are structured and divided into dedicated sub-applications (modules):
 
 * **Main App (`Main` and  `AreaClass`):** Acts as the entry point and CLI controller, interpreting user commands, managing geographic bounds, and coordinating save/load operations.
