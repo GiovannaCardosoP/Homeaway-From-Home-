@@ -6,8 +6,6 @@ import dataStructures.*;
 
 public class ServiceAreaClass implements ServiceArea {
     private static final long serialVersionUID = 0L;
-
-
     private transient Map<String, ServiceMain> getService;
     private List<ServiceMain> allServiceToList;
     private TwoWayList<ServiceMain>[]  servicesByStar;
@@ -36,11 +34,7 @@ public class ServiceAreaClass implements ServiceArea {
 
     @SuppressWarnings("unchecked")
     private TwoWayList<ServiceMain>[] initializeServicesByStar() {
-
-
         TwoWayList<ServiceMain>[] s = (DoublyLinkedList<ServiceMain>[]) new DoublyLinkedList[5];
-
-
         for (int i = 0; i < 5; i++) {
             s[i] = new DoublyLinkedList<>();
         }
@@ -49,10 +43,7 @@ public class ServiceAreaClass implements ServiceArea {
 
     @SuppressWarnings("unchecked")
     private List<ServiceMain>[][] initializeServicesByStarType() {
-
-
         List<ServiceMain>[][] s = (DoublyLinkedList<ServiceMain>[][]) new DoublyLinkedList[3][5];
-
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 3; j++) {
                 s[j][i] = new DoublyLinkedList<>();
@@ -84,13 +75,11 @@ public class ServiceAreaClass implements ServiceArea {
         if(isValidPrice(price)) throw new InvalidPriceException(t);
         if(isNotValidDiscount(t, val)) throw new InvalidDiscountException();
         if(isNotValidCapacity(t, val)) throw new InvalidCapacityException();
-
         switch (t){
             case LODGING ->s = new LodgingService(price,name,longitude,latitude, val);
             case LEISURE -> s = new LeisureService(latitude, longitude, name, price, val);
             default ->  s = new EatingService(price,name,longitude,latitude, val);
         }
-
         servicesByStar[3].addFirst(s);
         servicesByStarAndType[t.ordinal()][3].addLast(s);
         getService.put(s.getName().toUpperCase(),s);
@@ -118,7 +107,6 @@ public class ServiceAreaClass implements ServiceArea {
     public void actualizeRanking(String service, int stars, String description) throws IsNotValidStarException, ServiceDoesNotExistExeption{
         if(!isValidStar(stars)) throw new IsNotValidStarException();
         ServiceMain s = getServiceByName(service);
-
         int oldAverage = s.getEvaluationAverage();
         Evaluation e = new EvaluationClass(description,stars);
         ((Service)s).addRating(e);
@@ -126,7 +114,6 @@ public class ServiceAreaClass implements ServiceArea {
         int newAverage = s.getEvaluationAverage();
         int oldIndexByStar = servicesByStar[oldAverage-1].indexOf(s);
         int oldIndexByStarAndType = servicesByStarAndType[t.ordinal()][oldAverage-1].indexOf(s);
-
         if(newAverage != oldAverage) {
             servicesByStar[oldAverage - 1].remove(oldIndexByStar);
             servicesByStar[newAverage - 1].addFirst(s);
@@ -137,9 +124,7 @@ public class ServiceAreaClass implements ServiceArea {
     }
     @Override
     public Iterator<ServiceMain> allServicesIterator() throws NoServicesException {
-
         Iterator<ServiceMain> it = allServiceToList.iterator();
-
         if(!it.hasNext()){
             throw new NoServicesException();
         }
@@ -156,20 +141,14 @@ public class ServiceAreaClass implements ServiceArea {
 
     @Override
     public Iterator<ServiceMain> getServicesByStar() throws NoServicesException {
-
         List<ServiceMain> copy = new DoublyLinkedList<>();
-
         for (int i = 0; i < 5; i++) {
-
             TwoWayList<ServiceMain>  study = servicesByStar[i];
             TwoWayIterator<ServiceMain> it = study.twoWayiterator();
-
                 while (it.hasNext()){
                     copy.addFirst(it.next());
                 }
-
         }
-
         if(copy.isEmpty()) throw new NoServicesException();
         return copy.iterator();
     }
@@ -177,41 +156,30 @@ public class ServiceAreaClass implements ServiceArea {
 
     @Override
     public Iterator<ServiceMain> getServicesByStarAndType(ServiceMain studentAt, ServiceType sType, int average) {
-
         long studentLat = studentAt.getLatitude();
         long studentLong = studentAt.getLongitude();
         List<ServiceMain> old = servicesByStarAndType[sType.ordinal()][average-1];
         List<ServiceMain> copy = new DoublyLinkedList<>();
-
-
         ServiceMain temp = old.get(0);
         long minDistance = getManhattanDistance(studentLat,temp.getLatitude(), studentLong, temp.getLongitude());
         copy.addLast(temp);
-
         for (int i = 1; i < old.size(); i++) {
-
             ServiceMain study = old.get(i);
             long distance = getManhattanDistance(studentLat, study.getLatitude(), studentLong, study.getLongitude());
-
             if (distance < minDistance) {
-
                     copy = new DoublyLinkedList<>();
                     copy.addLast(study);
                     minDistance = distance;
-
-
             }else if(distance == minDistance){
             copy.addLast(study);
             }
         }
-
         return copy.iterator();
     }
 
 
     @Override
     public ServiceMain getBestAverage(ServiceType t) throws NoServicesException{
-
         for(int i = 4; i > 0; i--) {
             if (!servicesByStarAndType[t.ordinal()][i].isEmpty()) {
                 return servicesByStarAndType[t.ordinal()][i].getFirst();
@@ -223,9 +191,7 @@ public class ServiceAreaClass implements ServiceArea {
 
     @Override
     public ServiceMain getLeastExpensive(ServiceType t) throws NoServicesException{
-
         ServiceMain s = lessExpensiveServices[t.ordinal()];
-
         if(s == null){
             throw new NoServicesException();
         }
